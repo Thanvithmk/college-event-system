@@ -38,23 +38,32 @@ docker-compose up --build
 
 Open your browser and go to: http://localhost:3000
 
-# 🔌 API Endpoints
+# 🎓 Event Management System API
 
-Method	Endpoint	Description	Auth Required
-POST	/register-user	Register a new user	No
-POST	/login	Login and receive JWT	No
-GET	/events	View all events	No
-POST	/events	Create a new event	Yes (JWT)
-DELETE	/events/:id	Delete an event	Yes (Creator Only)
-POST	/join	Register a student for an event	No
+A simple Event Management System built using Node.js, Express, JWT Authentication, and Docker. Users can register, log in, create events, join events, and manage event participation.
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `POST` | `/register-user` | Register a new user | ❌ No |
+| `POST` | `/login` | Login and receive JWT token | ❌ No |
+| `GET` | `/events` | View all events | ❌ No |
+| `POST` | `/events` | Create a new event | ✅ Yes (JWT) |
+| `DELETE` | `/events/:id` | Delete an event | ✅ Yes (Creator Only) |
+| `POST` | `/join` | Register a student for an event | ❌ No |
+
+---
 
 ## 📦 Project Structure
 
-├── server.js           # Express server & API logic
-├── public/             # Frontend files
-│   ├── index.html      # Main Dashboard UI
-│   └── script.js       # Frontend logic & API calls
-├── Dockerfile          # Docker configuration
-├── docker-compose.yml  # Multi-container orchestration
-└── package.json        # Dependencies
-
+```bash
+├── server.js              # Express server & API logic
+├── public/                # Frontend files
+│   ├── index.html         # Main Dashboard UI
+│   └── script.js          # Frontend logic & API calls
+├── Dockerfile             # Docker configuration
+├── docker-compose.yml     # Multi-container orchestration
+└── package.json           # Dependencies
