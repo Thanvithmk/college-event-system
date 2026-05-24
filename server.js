@@ -74,6 +74,24 @@ app.post('/join', async (req, res) => {
     res.json(r);
 });
 
-app.get('/registrations', async (req, res) => res.json(await Registration.find()));
+app.get('/registrations', async (req, res) => {
+
+    const registrations = await Registration.find();
+
+    const result = [];
+
+    for (let r of registrations) {
+
+        const event = await Event.findById(r.eventId);
+
+        result.push({
+            studentName: r.studentName,
+            eventId: r.eventId,
+            eventTitle: event.title
+        });
+    }
+
+    res.json(result);
+});
 
 app.listen(3000, () => console.log('Server Running...'));

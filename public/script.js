@@ -122,7 +122,7 @@ async function joinEvent(id) {
     await fetch('/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ studentName: name, eventId: id })
+        body: JSON.stringify({ studentName: name, eventId: id}) // Include eventTitle in the request body
     });
     loadRegistrations();
 }
@@ -130,7 +130,7 @@ async function joinEvent(id) {
 async function loadRegistrations() {
     const res = await fetch('/registrations');
     const data = await res.json();
-    document.getElementById('regList').innerHTML = data.map(r => `<li>${r.studentName} registered for Event ID: ${r.eventId}</li>`).join('');
+    document.getElementById('regList').innerHTML = data.map(r => `<li>${r.studentName} registered for Event: ${r.eventTitle}</li>`).join('');
 }
 
 function logout() {
