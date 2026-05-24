@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Event System</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+        .box { background: white; border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
+        input { display: block; width: 100%; margin: 10px 0; padding: 10px; box-sizing: border-box; }
+        button { cursor: pointer; background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; }
+        .btn-red { background: #dc3545; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <h1>College Event System</h1>
+
+    <!-- Auth Section (Login & Register) -->
+    <div id="authSection">
+        <div class="box">
+            <h3>Register (Sign Up)</h3>
+            <input type="text" id="regUser" placeholder="New Username">
+            <input type="password" id="regPass" placeholder="New Password">
+            <button onclick="register()">Create Account</button>
+        </div>
+        <div class="box">
+            <h3>Login</h3>
+            <input type="text" id="loginUser" placeholder="Username">
+            <input type="password" id="loginPass" placeholder="Password">
+            <button onclick="login()" style="background:#007bff">Login</button>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="hidden">
+        <div class="box">
+            <h3>Create New Event</h3>
+            <input type="text" id="title" placeholder="Event Name (e.g. Hackathon)">
+            <input type="date" id="date">
+            <input type="text" id="venue" placeholder="Location">
+            <button onclick="addNewEvent()">Post Event</button>
+        </div>
+
+        <div class="box">
+            <h3>Available Events</h3>
+            <div id="eventList"></div>
+        </div>
+
+        <div class="box">
+            <h3>Student Registrations</h3>
+            <div id="regList"></div>
+        </div>
+        <button onclick="logout()" class="btn-red">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
