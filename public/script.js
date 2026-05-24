@@ -130,6 +130,7 @@ async function joinEvent(id) {
 async function loadRegistrations() {
     const res = await fetch('/registrations');
     const data = await res.json();
+    
     document.getElementById('regList').innerHTML = data.map(r => `<li>${r.studentName} registered for Event: ${r.eventTitle}</li>`).join('');
 }
 

@@ -76,22 +76,31 @@ app.post('/join', async (req, res) => {
 
 app.get('/registrations', async (req, res) => {
 
-    const registrations = await Registration.find();
+    try {
 
-    const result = [];
+        const registrations = await Registration.find();
 
-    for (let r of registrations) {
+        const result = [];
 
-        const event = await Event.findById(r.eventId);
+        for (let r of registrations) {
 
-        result.push({
-            studentName: r.studentName,
-            eventId: r.eventId,
-            eventTitle: event.title
+            const event = await Event.findById(r.eventId);
+
+            result.push({
+                studentName: r.studentName,
+                eventId: r.eventId,
+                eventTitle: event ? event.title : "Event Deleted"
+            });
+        }
+
+        res.json(result);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
         });
     }
-
-    res.json(result);
 });
 
 app.listen(3000, () => console.log('Server Running...'));
